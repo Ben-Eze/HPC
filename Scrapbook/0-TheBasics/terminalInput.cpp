@@ -4,6 +4,12 @@ using namespace std;
 namespace po = boost::program_options;
 
 int main(int argc, char** argv) {
+    /*
+    Simple example of using the boost program_options library to parse command line arguments.
+        eg. >> ./terminalInput --start 5 --end 10
+            >> ./terminalInput --help
+    */
+
     po::options_description desc("Available options");
 
     desc.add_options()
