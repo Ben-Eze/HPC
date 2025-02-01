@@ -1,0 +1,5 @@
+# undefined reference to ...
+    -> add in library
+eg. 'undefined rerence to boost::program_options::...'
+    -> 'g++ main.cpp -lboost_program_options
+
