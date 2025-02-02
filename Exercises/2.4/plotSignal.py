@@ -19,7 +19,9 @@ def main(filename):
     plt.xlabel("Time")
     plt.ylabel("Amplitude")
     plt.title("Signal")
-    plt.show()
 
 if __name__ == "__main__":
-    main("signal.txt")
+    main("Exercises/2.4/signal.txt")
+    main("Exercises/2.4/reconstructed_signal.txt")
+    plt.legend(["Original signal", "Reconstructed signal"])
+    plt.show()
