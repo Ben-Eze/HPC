@@ -24,3 +24,13 @@ g++ main.o -o main.exe
 # Libraries
 Note: the order in which libs are specified matters
 eg. if libA depends on libB, we must do g++ main.cpp libA libB
+
+# LAPACK
+- We can split F77NAME(dges)... # solve
+  into F77NAME(dgetrf)...     # triangular factorise
+  and F77NAME(dgetrs)         # triangular solve
+- dges solves a system of linear equations
+    - the first step (triangular factorising) is the more expensive part 
+- if we are solving the same system over and over again, we can use dgetrf to do the factorising step
+    - this allows us to do the most expensive step only once
+    - then at each iteration, you just need to use dgetrs
