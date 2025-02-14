@@ -34,3 +34,12 @@ eg. if libA depends on libB, we must do g++ main.cpp libA libB
 - if we are solving the same system over and over again, we can use dgetrf to do the factorising step
     - this allows us to do the most expensive step only once
     - then at each iteration, you just need to use dgetrs
+
+# Performance tests (profilers)
+- when compiling, we need to use the debugging flag (-g) AND an older version of the compiler (version 10)
+  eg. `g++-10 -g main.cpp -o main.exe`
+- we also need to 'module load' the dev-studio
+  ie. `module load dev-studios`
+- next we 'collect'
+  eg. `collect main.exe`
+- we run the 
