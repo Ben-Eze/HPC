@@ -1,0 +1,8 @@
+#!/bin/bash
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --mem=2000MB
+#SBATCH --time=00:05:00
+#SBATCH --job-name=myjob1
+#SBATCH --partition=test
+./myprog.exe

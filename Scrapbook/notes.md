@@ -43,3 +43,34 @@ eg. if libA depends on libB, we must do g++ main.cpp libA libB
 - next we 'collect'
   eg. `collect main.exe`
 - we run the 
+
+
+# Cluster
+1. create the job that you want to execute on the cluster
+eg.    myjob.slr:
+    -------------------------------
+    |  #!/bin/bash
+    |  #SBATCH --nodes=1
+    |  #SBATCH --ntasks=1
+    |  #SBATCH --mem=2000MB
+    |  #SBATCH --time=00:05:00
+    |  #SBATCH --job-name=myjob1
+    |  #SBATCH --partition=test           # to see which queues are available, use sinfo
+    |  ./myprog.exe
+    -------------------------------
+    
+2. convert the job to an exacutable
+    >> chmod +x myjob.slr 
+
+3. submit the job
+    >> sbatch myjob.slr
+
+4. check the status of the queue
+    >> squeue
+
+5. to cancel a job...
+    scancel {job_id}
+
+6. check the output of the job in `slurm-{job_id}.out`
+
+
