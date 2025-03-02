@@ -2,7 +2,7 @@
 #include <mpi.h>
 #include <vector>
 #include <random>
-#include <time>
+// #include <time>
 
 #define F77NAME(x) x##_
 
@@ -31,11 +31,23 @@ int main(int argc, char** argv){
     vector<double> a(N_loc), b(N_loc);
     for (int i{0}; i < N_loc; i++){
         a[i] = (double)(rand())/RAND_MAX;
-        a[i] = (double)(rand())/RAND_MAX;
+        b[i] = (double)(rand())/RAND_MAX;
     }
     
     double dot_loc = F77NAME(ddot)(N_loc, a.data(), 1, b.data(), 1);
+    cout << "dot_loc = " << dot_loc << endl;
     double dot;
 
-    MPI_Reduce(&dot_loc, &dot, 1, MPI_DOUBLE, MPI_SUM)
+    MPI_Reduce(&dot_loc, &dot, 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
+
+    if (rank == 0){
+        cout << "Total: " << dot << endl;
+    }
+
+    MPI_Finalize();
 }
+
+/*
+mpicxx reduce.cpp -o reduce.exe -lblas
+mpirun -np 2 ./reduce.exe
+*/
