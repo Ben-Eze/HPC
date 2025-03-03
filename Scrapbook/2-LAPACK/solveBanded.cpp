@@ -30,9 +30,10 @@ int main() {
     std::cout << "Solution: " << b[0] << ", " << b[1] << std::endl;
 
     // Use banded matrix
-    int k = 5, m = 6;
+    int k = 5, 
+        m = 5;                  // 
     int KL = 2, KU = 1;
-    int nb = 1 + 2*KL + KU;
+    int nb = 1 + 2*KL + KU;     // height of banded matrix (with padding)
     double X = 0;   // Placeholder for unused elements
     double* A_banded = new double[nb * m] {X, X, X,  1,  2,  3, 
                                            X, X, 4,  5,  6,  7, 
